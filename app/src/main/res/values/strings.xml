@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AppTest</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="hello_location_fragment">Hello location fragment</string>
+    <string name="hello_flight_fragment">Hello flight fragment</string>
+    <string name="title_location">Locations</string>
+    <string name="title_flight">Flights</string>
+</resources>

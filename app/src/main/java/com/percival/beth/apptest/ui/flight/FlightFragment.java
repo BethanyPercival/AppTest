@@ -12,7 +12,7 @@ import com.percival.beth.apptest.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FlightFragment extends Fragment {
+public class FlightFragment extends Fragment implements IFlightView {
 
 
     public FlightFragment() {

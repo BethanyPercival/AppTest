@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.percival.beth.apptest.R;
+import com.percival.beth.apptest.model.Location;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LocationFragment extends Fragment {
+public class LocationFragment extends Fragment implements ILocationView {
 
 
     public LocationFragment() {
@@ -27,4 +28,18 @@ public class LocationFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_location, container, false);
     }
 
+    @Override
+    public void populateList(Location location) {
+
+    }
+
+    @Override
+    public void displayError(String errorMessage) {
+
+    }
+
+    @Override
+    public void openHolidayDetailsActivity(Location location) {
+
+    }
 }

@@ -5,4 +5,7 @@ package com.percival.beth.apptest.ui.location;
  */
 
 public interface ILocationPresenter {
+    void onDataError(String errorMessage);
+
+    void listItemSelected(int listItemPosition);
 }

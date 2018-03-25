@@ -1,11 +1,15 @@
 package com.percival.beth.apptest.ui.location;
 
+import com.percival.beth.apptest.model.Location;
+import com.percival.beth.apptest.network.response.GetLocationsResponse;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +30,7 @@ public class LocationPresenterTest {
     @Mock
     private Location mockLocation;
     @Mock
-    private GetLocationsResponse mockGetPlantDetailsResponse;
+    private GetLocationsResponse mockGetLocationsResponse;
 
     private LocationPresenter mockPresenter;
 
@@ -41,18 +45,18 @@ public class LocationPresenterTest {
 
     @Test
     public void shouldCallGetLocations_whenViewReadyIsCalled() {
-        mockPresenter.OnViewReady();
+        mockPresenter.onViewReady();
 
         verify(mockData).getLocations();
     }
 
     @Test
     public void shouldCallPopulateList_whenDataReadyIsCalled() {
-        List<Location> list = new ArrayList<>();
+        ArrayList<Location> list = new ArrayList<>();
         list.add(mockLocation);
-        when(mockGetPlantDetailsResponse.getLocationList()).thenReturn(list);
+        when(mockGetLocationsResponse.getLocationList()).thenReturn(list);
 
-        mockPresenter.onDataReady(mockGetPlantDetailsResponse);
+        mockPresenter.onDataReady(mockGetLocationsResponse);
 
         verify(mockView).populateList(mockLocation);
     }

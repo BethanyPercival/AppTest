@@ -36,7 +36,6 @@ public class LocationPresenterTest {
 
     private static final String ERROR_MESSAGE = "There was an error";
     private static final int LIST_ITEM_POSITION = 1;
-    private static final int MOCK_LOCATION_NULL = 1;
 
     @Before
     public void setUp() throws Exception {

@@ -8,12 +8,16 @@ import com.percival.beth.apptest.network.response.GetLocationsResponse;
 
 public class LocationPresenter implements ILocationPresenter {
 
-    public LocationPresenter(ILocationView view, LocationData data) {
+    private ILocationView view;
+    private LocationData data;
 
+    public LocationPresenter(ILocationView view, LocationData data) {
+        this.view = view;
+        this.data = data;
     }
 
     public void onViewReady() {
-
+        data.getLocations();
     }
 
     public void onDataReady(GetLocationsResponse getLocationsResponse) {

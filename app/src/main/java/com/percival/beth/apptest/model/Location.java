@@ -11,8 +11,9 @@ public class Location {
     @SerializedName("hotel_location")
     private String hotelLocation;
     private String description;
+    @SerializedName("images")
     private String[] imageUrls;
-    private Double rating;
+    private Float rating;
     private String[] facilities;
 
     public String getName() {
@@ -47,11 +48,11 @@ public class Location {
         this.imageUrls = imageUrls;
     }
 
-    public Double getRating() {
+    public Float getRating() {
         return rating;
     }
 
-    public void setRating(Double rating) {
+    public void setRating(Float rating) {
         this.rating = rating;
     }
 

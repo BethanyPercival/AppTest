@@ -7,9 +7,9 @@ import com.percival.beth.apptest.model.Location;
  */
 
 public interface ILocationView {
-    void populateList(Location location);
+    void populateList(Location locationList);
 
-    void displayError(String errorMessage);
+    void displayError();
 
     void openHolidayDetailsActivity(Location location);
 }

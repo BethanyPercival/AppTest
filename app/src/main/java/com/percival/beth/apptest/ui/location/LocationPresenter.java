@@ -1,6 +1,6 @@
 package com.percival.beth.apptest.ui.location;
 
-import com.percival.beth.apptest.network.response.GetLocationsResponse;
+import com.percival.beth.apptest.model.Location;
 
 /**
  * Created by beth_ on 25/03/2018.
@@ -17,16 +17,15 @@ public class LocationPresenter implements ILocationPresenter {
     }
 
     public void onViewReady() {
-        data.getLocations();
+        data.getLocations(this);
     }
 
-    public void onDataReady(GetLocationsResponse getLocationsResponse) {
-
-    }
-
-    @Override
-    public void onDataError(String errorMessage) {
-
+    public void onDataReady(Location getLocationsResponse) {
+        if (getLocationsResponse != null) {
+            view.populateList(getLocationsResponse);
+        } else {
+            view.displayError();
+        }
     }
 
     @Override

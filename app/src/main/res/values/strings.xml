@@ -6,4 +6,5 @@
     <string name="hello_flight_fragment">Hello flight fragment</string>
     <string name="title_location">Locations</string>
     <string name="title_flight">Flights</string>
+    <string name="error_generic_try_again_later">Something went wrong, please try again later</string>
 </resources>

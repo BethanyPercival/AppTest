@@ -3,6 +3,7 @@ package com.percival.beth.apptest.ui.location;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ public class LocationFragment extends Fragment implements ILocationView {
     RecyclerView recyclerViewLocation;
 
     private ILocationPresenter presenter;
+    private LocationRecyclerViewAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,18 +29,27 @@ public class LocationFragment extends Fragment implements ILocationView {
         View view = inflater.inflate(R.layout.fragment_location, container, false);
         ButterKnife.bind(this, view);
         presenter = new LocationPresenter(this, new LocationData());
+        initialiseRecyclerView();
         presenter.onViewReady();
         return view;
     }
 
     @Override
-    public void populateList(Location location) {
+    public void populateList(final Location locationList) {
+        getActivity().runOnUiThread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        recyclerViewLocation.setAdapter(new LocationRecyclerViewAdapter(locationList, presenter, getContext()));
+                    }
+                }
 
+        );
     }
 
     @Override
-    public void displayError(String errorMessage) {
-
+    public void displayError() {
+//        context.getString(R.string.error_generic_try_again_later)
     }
 
     @Override
@@ -48,5 +59,13 @@ public class LocationFragment extends Fragment implements ILocationView {
 
     public LocationFragment() {
         // Required empty public constructor
+    }
+
+    private void initialiseRecyclerView() {
+        adapter = new LocationRecyclerViewAdapter(null, presenter, getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerViewLocation.setLayoutManager(layoutManager);
+        recyclerViewLocation.setAdapter(adapter);
     }
 }

@@ -1,6 +1,6 @@
 package com.percival.beth.apptest.ui.location;
 
-import com.percival.beth.apptest.network.response.GetLocationsResponse;
+import com.percival.beth.apptest.model.Location;
 
 /**
  * Created by beth_ on 25/03/2018.
@@ -9,9 +9,7 @@ import com.percival.beth.apptest.network.response.GetLocationsResponse;
 public interface ILocationPresenter {
     void onViewReady();
 
-    void onDataReady(GetLocationsResponse getLocationsResponse);
-
-    void onDataError(String errorMessage);
+    void onDataReady(Location getLocationsResponse);
 
     void listItemSelected(int listItemPosition);
 }

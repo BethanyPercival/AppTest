@@ -1,6 +1,5 @@
 package com.percival.beth.apptest.ui.flight;
 
-import com.percival.beth.apptest.model.Flight;
 import com.percival.beth.apptest.network.response.GetFlightsResponse;
 
 import org.junit.Before;
@@ -21,8 +20,6 @@ public class FlightPresenterTest {
     private IFlightView mockView;
     @Mock
     private FlightData mockData;
-    @Mock
-    private Flight mockFlight;
     @Mock
     private GetFlightsResponse mockGetFlightsResponse;
 

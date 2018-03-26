@@ -21,7 +21,7 @@ public class LocationData {
     public void getLocations(final ILocationPresenter presenter) {
         apiRequest.getLocations()
                 .subscribeOn(Schedulers.io())
-                .onErrorReturnItem(null)
+                .onErrorReturnItem(new Location())
                 .subscribe(new Consumer<Location>() {
                     @Override
                     public void accept(Location getLocationsResponse) throws Exception {

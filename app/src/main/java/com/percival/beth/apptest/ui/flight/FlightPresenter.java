@@ -8,17 +8,25 @@ import com.percival.beth.apptest.network.response.GetFlightsResponse;
 
 public class FlightPresenter implements IFlightPresenter {
 
-    public FlightPresenter(IFlightView view, FlightData data) {
+    private IFlightView view;
+    private FlightData data;
 
+    public FlightPresenter(IFlightView view, FlightData data) {
+        this.view = view;
+        this.data = data;
     }
 
     @Override
     public void onViewReady() {
-
+        data.getFlights(this);
     }
 
     @Override
     public void onDataReady(GetFlightsResponse getFlightsResponse) {
-
+        if (getFlightsResponse != null) {
+            view.populateList(getFlightsResponse);
+        } else {
+            view.displayError();
+        }
     }
 }

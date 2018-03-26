@@ -21,7 +21,7 @@ public class LocationPresenter implements ILocationPresenter {
     }
 
     public void onDataReady(Location getLocationsResponse) {
-        if (getLocationsResponse != null) {
+        if (getLocationsResponse.getName() != null) {
             view.populateList(getLocationsResponse);
         } else {
             view.displayError();

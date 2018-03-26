@@ -1,22 +1,21 @@
 package com.percival.beth.apptest.ui.flight;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.percival.beth.apptest.R;
 import com.percival.beth.apptest.model.Flight;
-import com.squareup.picasso.Picasso;
 
-import org.joda.time.DateTime;
-
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,13 +27,9 @@ import butterknife.ButterKnife;
 public class FlightRecyclerViewAdapter extends RecyclerView.Adapter<FlightRecyclerViewAdapter.ViewHolder> {
 
     private ArrayList<Flight> flightList;
-    private IFlightPresenter presenter;
-    private Context context;
 
-    public FlightRecyclerViewAdapter(ArrayList<Flight> flightList, IFlightPresenter presenter, Context context) {
+    public FlightRecyclerViewAdapter(ArrayList<Flight> flightList) {
         this.flightList = flightList;
-        this.presenter = presenter;
-        this.context = context;
     }
 
     @NonNull
@@ -48,9 +43,9 @@ public class FlightRecyclerViewAdapter extends RecyclerView.Adapter<FlightRecycl
     public void onBindViewHolder(@NonNull FlightRecyclerViewAdapter.ViewHolder holder, int position) {
         Flight flight = flightList.get(position);
         holder.setFlightLocation(flight.getDepartureAirport() + " to " + flight.getArrivalAirport());
-        holder.setFlightDate();
+        holder.setFlightDate(holder.convertIsoDateTime(flight.getDepartureDate()) + " to " + holder.convertIsoDateTime(flight.getArrivalDate()));
         holder.setAirline(flight.getAirline());
-        holder.setPrice(String.valueOf(flight.getPrice()));
+        holder.setPrice("£" + String.valueOf(flight.getPrice()));
     }
 
     @Override
@@ -95,8 +90,20 @@ public class FlightRecyclerViewAdapter extends RecyclerView.Adapter<FlightRecycl
         }
 
         public String convertIsoDateTime(String dateTime) {
-            return new DateTime( "2010-01-01T12:00:00+01:00" ) ;
-//            jodatime
+            DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            String string1 = dateTime;
+
+            try {
+                Date result1 = df1.parse(string1);
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(result1.getTime());
+                return formatter.format(calendar.getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            return "";
         }
     }
 }

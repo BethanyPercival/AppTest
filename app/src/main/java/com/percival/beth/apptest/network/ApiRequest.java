@@ -2,6 +2,7 @@ package com.percival.beth.apptest.network;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.percival.beth.apptest.model.Location;
+import com.percival.beth.apptest.network.response.GetFlightsResponse;
 
 import io.reactivex.Single;
 import retrofit2.Retrofit;
@@ -21,5 +22,10 @@ public class ApiRequest {
     public Single<Location> getLocations() {
         NetworkTask networkTask = retrofit.create(NetworkTask.class);
         return networkTask.getLocations();
+    }
+
+    public Single<GetFlightsResponse> getFlights() {
+        NetworkTask networkTask = retrofit.create(NetworkTask.class);
+        return networkTask.getFlights();
     }
 }

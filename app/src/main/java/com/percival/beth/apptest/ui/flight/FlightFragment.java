@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.percival.beth.apptest.R;
+import com.percival.beth.apptest.network.response.GetFlightsResponse;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class FlightFragment extends Fragment implements IFlightView {
 
 
@@ -27,4 +25,13 @@ public class FlightFragment extends Fragment implements IFlightView {
         return inflater.inflate(R.layout.fragment_flight, container, false);
     }
 
+    @Override
+    public void populateList(GetFlightsResponse getFlightsResponse) {
+
+    }
+
+    @Override
+    public void displayError() {
+
+    }
 }

@@ -5,4 +5,7 @@ package com.percival.beth.apptest.ui.flight;
  */
 
 public class FlightData {
+    public void getFlights(FlightPresenter presenter) {
+
+    }
 }

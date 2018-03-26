@@ -1,5 +1,8 @@
 package com.percival.beth.apptest.ui.flight;
 
+import com.percival.beth.apptest.model.Flight;
+import com.percival.beth.apptest.network.response.GetFlightsResponse;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

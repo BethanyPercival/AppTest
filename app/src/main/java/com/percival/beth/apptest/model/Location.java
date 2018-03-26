@@ -2,11 +2,13 @@ package com.percival.beth.apptest.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by beth_ on 25/03/2018.
  */
 
-public class Location {
+public class Location implements Serializable {
     private String name;
     @SerializedName("hotel_location")
     private String hotelLocation;

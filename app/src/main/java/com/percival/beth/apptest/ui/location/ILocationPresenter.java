@@ -11,5 +11,5 @@ public interface ILocationPresenter {
 
     void onDataReady(Location getLocationsResponse);
 
-    void listItemSelected(int listItemPosition);
+    void listItemSelected(Location location);
 }

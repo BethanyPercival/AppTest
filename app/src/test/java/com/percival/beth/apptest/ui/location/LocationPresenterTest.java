@@ -37,6 +37,7 @@ public class LocationPresenterTest {
     private LocationPresenter mockPresenter;
 
     private static final Location NULL_RESPONSE = null;
+    private static final int LIST_ITEM_POSITION = 1;
 
     @Before
     public void setUp() throws Exception {
@@ -64,25 +65,18 @@ public class LocationPresenterTest {
         verify(mockView).displayError();
     }
 
-//    @Test
-//    public void shouldCallGetLocationDetails_whenListItemSelectedIsCalled() {
-//        mockPresenter.listItemSelected(LIST_ITEM_POSITION);
-//
-//        verify(mockData).getLocationDetails(LIST_ITEM_POSITION);
-//    }
+    @Test
+    public void shouldCallGetLocationDetails_whenListItemSelectedIsCalled() {
+        mockPresenter.listItemSelected(mockLocation);
 
-//    @Test
-//    public void shouldCallOpenHolidayDetails_whenLocationDetailsAreNotNull() {
-//        when(mockData.getLocationDetails(LIST_ITEM_POSITION)).thenReturn(mockLocation);
-//
-//        verify(mockView).openHolidayDetailsActivity(mockLocation);
-//    }
-//
-//    @Test
-//    public void shouldCallDisplayError_whenLocationDetailsAreNull() {
-//        when(mockData.getLocationDetails(LIST_ITEM_POSITION)).thenReturn(null);
-//
-//        verify(mockView).displayError(ERROR_MESSAGE);
-//    }
+        verify(mockView).openHolidayDetailsActivity(mockLocation);
+    }
+
+    @Test
+    public void shouldCallDisplayError_whenLocationDetailsAreNull() {
+        mockPresenter.listItemSelected(null);
+
+        verify(mockView).displayError();
+    }
 
 }

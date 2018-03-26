@@ -9,6 +9,5 @@
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#000000</color>
 
-    <color name="text_enabled">@color/primaryLightColor</color>
-    <color name="text_disabled">@color/primaryColor</color>
+    <color name="backgroundColor">#ECEFF1</color>
 </resources>

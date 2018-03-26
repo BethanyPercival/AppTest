@@ -2,6 +2,7 @@ package com.percival.beth.apptest.ui.location;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +14,12 @@ import android.widget.TextView;
 
 import com.percival.beth.apptest.R;
 import com.percival.beth.apptest.model.Location;
+import com.percival.beth.apptest.utils.AddViewsToAnotherView;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by beth_ on 25/03/2018.
@@ -42,12 +45,18 @@ public class LocationRecyclerViewAdapter extends RecyclerView.Adapter<LocationRe
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Location location = locationList;
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        final Location location = locationList;
         holder.setHotelName(location.getName());
         holder.setLocationName(location.getHotelLocation());
         holder.setRating(location.getRating());
-        holder.addImagesToHorizontalScrollView(location.getImageUrls());
+        AddViewsToAnotherView.addImageViewsToLinearLayout(location.getImageUrls(), holder.linearLayoutImages, context);
+        holder.constraintLayoutRootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.listItemSelected(location);
+            }
+        });
     }
 
     @Override
@@ -67,6 +76,10 @@ public class LocationRecyclerViewAdapter extends RecyclerView.Adapter<LocationRe
         TextView textViewLocation;
         @BindView(R.id.rating_bar)
         RatingBar ratingBar;
+        @BindView(R.id.linear_layout_images)
+        LinearLayout linearLayoutImages;
+        @BindView(R.id.root_view)
+        ConstraintLayout constraintLayoutRootView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -83,17 +96,6 @@ public class LocationRecyclerViewAdapter extends RecyclerView.Adapter<LocationRe
 
         public void setRating(float rating) {
             this.ratingBar.setRating(rating);
-        }
-
-        private void addImagesToHorizontalScrollView(String[] imageUrls) {
-            LinearLayout layout = itemView.findViewById(R.id.linear_layout_images);
-            for (int i = 0; i < imageUrls.length; i++) {
-                ImageView imageView = new ImageView(context);
-                imageView.setId(i);
-                imageView.setPadding(2, 2, 2, 2);
-                Picasso.get().load(imageUrls[i]).into(imageView);
-                layout.addView(imageView);
-            }
         }
     }
 }

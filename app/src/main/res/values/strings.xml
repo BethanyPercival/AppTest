@@ -7,4 +7,7 @@
     <string name="title_location">Locations</string>
     <string name="title_flight">Flights</string>
     <string name="error_generic_try_again_later">Something went wrong, please try again later</string>
+    <string name="title_holiday_details">Holiday Details</string>
+    <string name="item_facilities">Facilities:</string>
+    <string name="item_images">Images</string>
 </resources>

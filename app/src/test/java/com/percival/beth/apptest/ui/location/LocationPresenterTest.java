@@ -1,9 +1,6 @@
 package com.percival.beth.apptest.ui.location;
 
-import android.content.Context;
-
 import com.percival.beth.apptest.model.Location;
-import com.percival.beth.apptest.network.response.GetLocationsResponse;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,11 +8,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -36,8 +28,7 @@ public class LocationPresenterTest {
 
     private LocationPresenter mockPresenter;
 
-    private static final Location NULL_RESPONSE = null;
-    private static final int LIST_ITEM_POSITION = 1;
+    private static final String HOTEL_NAME = "Hotel Name";
 
     @Before
     public void setUp() throws Exception {
@@ -53,6 +44,7 @@ public class LocationPresenterTest {
 
     @Test
     public void shouldCallPopulateList_whenDataReadyIsCalled() {
+        when(mockGetLocationsResponse.getName()).thenReturn(HOTEL_NAME);
         mockPresenter.onDataReady(mockGetLocationsResponse);
 
         verify(mockView).populateList(mockGetLocationsResponse);
@@ -60,7 +52,7 @@ public class LocationPresenterTest {
 
     @Test
     public void shouldCallDisplayError_whenDataIsNull() {
-        mockPresenter.onDataReady(NULL_RESPONSE);
+        mockPresenter.onDataReady(mockLocation);
 
         verify(mockView).displayError();
     }

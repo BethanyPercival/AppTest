@@ -74,10 +74,8 @@ public class LocationFragment extends Fragment implements ILocationView {
     }
 
     private void initialiseRecyclerView() {
-        adapter = new LocationRecyclerViewAdapter(null, presenter, getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewLocation.setLayoutManager(layoutManager);
-        recyclerViewLocation.setAdapter(adapter);
     }
 }

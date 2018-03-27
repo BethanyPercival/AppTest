@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/text_view_hotel_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_regular"
+                android:layout_marginStart="@dimen/margin_regular"
+                android:layout_marginTop="@dimen/margin_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Made Up Hotel Name" />
+
+            <TextView
+                android:id="@+id/text_view_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_regular"
+                android:layout_marginStart="@dimen/margin_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_hotel_name"
+                tools:text="Sidari, Greece" />
+
+            <RatingBar
+                android:id="@+id/rating_bar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_regular"
+                android:layout_marginStart="@dimen/margin_regular"
+                android:clickable="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_location" />
+
+            <TextView
+                android:id="@+id/text_view_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_regular"
+                android:layout_marginStart="@dimen/margin_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rating_bar"
+                tools:text="This is the description of a hotel. This hotel has an award winning swimming pool with the longest slide in the known universe." />
+
+            <View
+                android:id="@+id/view_divider_description"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="@dimen/margin_regular"
+                android:background="@color/backgroundColor"
+                app:layout_constraintTop_toBottomOf="@id/text_view_description" />
+
+            <TextView
+                android:id="@+id/text_view_images"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_regular"
+                android:layout_marginStart="@dimen/margin_regular"
+                android:layout_marginTop="@dimen/margin_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_divider_description"
+                android:text="@string/item_images"
+                android:textSize="18sp"/>
+
+            <HorizontalScrollView
+                android:id="@+id/horizontal_scroll_view_images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_images"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_images"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/margin_regular">
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <View
+                android:id="@+id/view_divider_images"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/backgroundColor"
+                app:layout_constraintTop_toBottomOf="@id/horizontal_scroll_view_images" />
+
+            <TextView
+                android:id="@+id/text_view_facilities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_regular"
+                android:layout_marginStart="@dimen/margin_regular"
+                android:layout_marginTop="@dimen/margin_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_divider_images"
+                android:text="@string/item_facilities"
+                android:textSize="18sp"/>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_facilities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_regular"
+                android:layout_marginStart="@dimen/margin_regular"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_facilities">
+
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

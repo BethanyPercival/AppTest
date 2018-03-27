@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_view_flight_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_regular"
+        android:layout_marginStart="@dimen/margin_regular"
+        android:layout_marginTop="@dimen/margin_regular"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Manchester to Berlin" />
+
+    <TextView
+        android:id="@+id/text_view_flight_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_regular"
+        android:layout_marginStart="@dimen/margin_regular"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_flight_location"
+        tools:text="31/12/18 11:00am to 10/01/19 09:00pm" />
+
+    <TextView
+        android:id="@+id/text_view_airline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_regular"
+        android:layout_marginStart="@dimen/margin_regular"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_flight_date"
+        tools:text="Thomas Cook" />
+
+    <TextView
+        android:id="@+id/text_view_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_regular"
+        android:layout_marginStart="@dimen/margin_regular"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_airline"
+        tools:text="£1200" />
+
+    <View
+        android:id="@+id/view_divider_name"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/margin_regular"
+        android:background="@color/backgroundColor"
+        app:layout_constraintTop_toBottomOf="@id/text_view_price" />
+
+</android.support.constraint.ConstraintLayout>

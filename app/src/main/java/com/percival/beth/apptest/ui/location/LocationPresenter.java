@@ -21,7 +21,7 @@ public class LocationPresenter implements ILocationPresenter {
     }
 
     public void onDataReady(Location getLocationsResponse) {
-        if (getLocationsResponse != null) {
+        if (getLocationsResponse.getName() != null) {
             view.populateList(getLocationsResponse);
         } else {
             view.displayError();
@@ -30,7 +30,7 @@ public class LocationPresenter implements ILocationPresenter {
 
     @Override
     public void listItemSelected(Location location) {
-        if(location != null) {
+        if (location != null) {
             view.openHolidayDetailsActivity(location);
         } else {
             view.displayError();
